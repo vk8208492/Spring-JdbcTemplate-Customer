@@ -6,12 +6,12 @@ Postman (https://www.postman.com/)
 
 Отримання всіх даних
 GET
-http://127.0.0.1:8080/api/v1/customers
+http://localhost:8080/api/v1/customers
 
 
 Створення даних
 POST
-http://127.0.0.1:8080/api/v1/customers
+http://localhost:8080/api/v1/customers
 
 Виконуємо окремі запити.
 Налаштування в Postman: Body, raw, JSON.
