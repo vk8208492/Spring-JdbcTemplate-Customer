@@ -10,11 +10,11 @@ public class CustomerValidator {
     public Map<String, String> validateData(Customer customer) {
         Map<String, String> errors = new HashMap<>();
         if (customer.getName() == null)
-            errors.put("First name", "has no data");
+            errors.put("name", "has no data");
         if (customer.getPhone() == null)
-            errors.put("Last name", "has no data");
+            errors.put("phone", "has no data");
         if (customer.getAddress() == null || customer.getAddress().matches(PHONE_RGX))
-            errors.put("Email", "has no data or is wrong format.");
+            errors.put("Address", "has no data or is wrong format.");
         return errors;
     }
 }

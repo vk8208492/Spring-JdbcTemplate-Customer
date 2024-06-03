@@ -27,7 +27,7 @@ public  class CustomerRepository implements AppRepository<Customer> {
 
     @Override
     public boolean create(Customer customer) {
-        String sql = "INSERT INTO users (name, " +
+        String sql = "INSERT INTO customers (name, " +
                 "phone, address) " +
                 "VALUES (:name, :phone, :address)";
         SqlParameterSource paramSource =
@@ -53,7 +53,7 @@ public  class CustomerRepository implements AppRepository<Customer> {
 
     @Override
     public Optional<Customer> fetchById(Long id) {
-        String sql = "SELECT * FROM users WHERE id = :id LIMIT 1";
+        String sql = "SELECT * FROM customers WHERE id = :id LIMIT 1";
         SqlParameterSource paramSource =
                 new MapSqlParameterSource("id", id);
         Optional<Customer> optional;
@@ -68,9 +68,9 @@ public  class CustomerRepository implements AppRepository<Customer> {
 
     @Override
     public boolean update(Long id, Customer customer) {
-        String sql = "UPDATE users " +
-                "SET first_name = :firstName, last_name = :lastName, " +
-                "email = :email " +
+        String sql = "UPDATE customers " +
+                "SET name = :name, phone = :phone, " +
+                "address = :address " +
                 "WHERE id = :id";
         SqlParameterSource paramSource = new MapSqlParameterSource()
                 .addValue("name", customer.getName())
@@ -82,14 +82,14 @@ public  class CustomerRepository implements AppRepository<Customer> {
 
     @Override
     public boolean delete(Long id) {
-        String sql = "DELETE FROM users WHERE id = :id";
+        String sql = "DELETE FROM customers WHERE id = :id";
         SqlParameterSource paramSource =
                 new MapSqlParameterSource("id", id);
         return template.update(sql, paramSource) > 0;
     }
 
     public Optional<Customer> getLastEntity() {
-        String sql = "SELECT * FROM users ORDER BY id DESC LIMIT 1";
+        String sql = "SELECT * FROM customers ORDER BY id DESC LIMIT 1";
         SqlParameterSource paramSource =
                 new MapSqlParameterSource();
         Optional<Customer> optional;
